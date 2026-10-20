@@ -2,9 +2,13 @@
 
 A skill-based plugin that handles small tasks directly and coordinates approved independent subagents. Version 0.1.0 uses one coordinator and at most three active workers, limited by user preference and host capacity.
 
+**Status: early release.** Local installation, picker discovery, and simple invocation have been confirmed. Live delegated execution and efficiency comparisons remain untested. See [verification evidence](docs/verification.md).
+
 Before launching or assigning workers, it presents concrete roles, ownership, deliverables, dependencies, and speed/usage tradeoffs, then waits for explicit confirmation. Workers cannot create workers. Shared edits and final evidence checks belong to the coordinator.
 
 ## Installation
+
+See [DEPLOYMENT.md](DEPLOYMENT.md) for complete installation, GitHub publishing, prerelease, update, and rollback steps.
 
 This repository contains a supported catalog at `.agents/plugins/marketplace.json` and the plugin at `plugins/agent-dispatcher/`. Restart the desktop host, open the Plugins Directory, select **Agent Dispatcher Local**, and install **Agent Dispatcher**. Start a fresh chat and select the installed plugin through the host picker. Use the identifier shown by the host; no literal @ identifier is assumed here.
 
@@ -20,9 +24,9 @@ Installation changes the host cache and plugin settings. Source changes require 
 
 ## Use
 
-After selecting the plugin, describe the task, desired output, and constraints. Example:
+After selecting the plugin, describe the task, desired output, and constraints naturally. You do not need to divide it into worker assignments. Example:
 
-> Assess whether separate frontend and backend changes would benefit from workers. Propose exact ownership and deliverables for my approval before starting them.
+> Plan an evening in Richboro, Pennsylvania: compare coffee shops, dinner restaurants, and activities after dinner. Verify hours and prices, then combine the findings into an itinerary.
 
 A simple rewrite should be completed directly. A useful parallel task should produce a proposal and wait. A general request for agents is not approval of an unseen proposal.
 
@@ -35,6 +39,10 @@ Run `python scripts/validate.py` with Python 3.12 or newer. No dependencies are 
 See [behavioral scenarios](docs/validation.md), [project plan](PLAN.md), and [contribution guidance](CONTRIBUTING.md). The root `task-brief.md` is copied into the skill's references so the installed package is self-contained; validation checks that the copies match.
 
 The distributable plugin folder is `plugins/agent-dispatcher/`. No remote repository has been created or published. No open-source license has been selected; choose one before representing the project as open-source software.
+
+To create a validated plugin archive, run `python scripts/package.py`. It writes `dist/agent-dispatcher-0.1.0.zip`, containing the manifest and self-contained skill at the archive root. The archive is a distribution artifact, not a claim that every host supports ZIP installation. Install through the supported marketplace flow above.
+
+Before publishing to GitHub, run validation and packaging, review the staged files, create your GitHub repository, and upload this repository. The included marketplace uses relative paths, so it can be registered from another clone. Mark the first GitHub release as a prerelease and include [CHANGELOG.md](CHANGELOG.md) and the verification limitations in its description. Do not claim universal plugin directory approval or measured speed savings.
 
 Full project acceptance also requires approved live worker scenarios and comparable sequential/delegated measurements from PLAN.md. Static review alone does not establish those results.
 

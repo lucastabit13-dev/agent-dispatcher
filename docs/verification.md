@@ -18,6 +18,10 @@ Verified October 20, 2026, in the local Windows Codex environment.
 
 Registration and installation required normal host approval for writes to user settings/cache. No hand editing of those files was used.
 
-Not verified: desktop picker discovery after refresh, fresh-chat invocation, live approved worker execution, and comparable sequential/delegated speed or usage. No workers were spawned. The current chat's loaded skill list cannot establish fresh-session discovery. GitHub CI has been prepared but has not run remotely. No remote repository or publication was created. No license grant was selected.
+The user subsequently confirmed that Agent Dispatcher appeared in the desktop picker and that a fresh-chat one-sentence rewrite completed directly. Those two checks are user-reported results, rather than independently observed tool runs.
 
-Next acceptance check: restart or refresh the desktop app, start a fresh chat, select Agent Dispatcher in the host picker, and request a one-sentence rewrite. Confirm that it completes directly. Test a useful parallel task next: it should propose concrete roles and wait for approval before any workers start.
+Not verified: live approved worker execution and comparable sequential/delegated speed or usage. No workers were spawned during development. GitHub CI has been prepared but has not run remotely. No remote repository or publication was created. No license grant was selected.
+
+The user also reported that a coffee-and-dinner request completed without workers. That outcome alone does not establish a failure: the dispatcher may choose solo execution for short tasks. Whether it explained its delegation decision was not recorded. Further behavioral testing should cover natural requests with independent work, proposal approval, and actual worker execution.
+
+Next acceptance check: request a useful parallel task. It should assess delegation, propose concrete roles when worthwhile, and wait for approval before any workers start. Full PLAN.md acceptance remains open until live orchestration and efficiency evaluation have been performed.

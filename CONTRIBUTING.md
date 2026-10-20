@@ -4,4 +4,6 @@ Read AGENTS.md and PLAN.md before changing the workflow. Keep the plugin self-co
 
 Run `python scripts/validate.py` before submitting a change. For instruction changes, run the relevant scenarios in `docs/validation.md` and record observed behavior separately from expected behavior. Workers require explicit confirmation of their concrete roles, including during testing.
 
+Run `python scripts/package.py` to check the distributable archive. Follow [DEPLOYMENT.md](DEPLOYMENT.md) when preparing a GitHub release.
+
 Do not commit credentials, local host configuration, caches, or generated archives. Public publication and licensing are maintainer decisions; this initial source has no open-source license grant.
