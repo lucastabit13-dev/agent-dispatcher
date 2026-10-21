@@ -6,13 +6,13 @@ Input: a user task supplied with the plugin selected, plus optional output requi
 
 Output: one integrated result, concise verification evidence, unresolved limitations, and truthful progress. Require explicit confirmation of the concrete delegation proposal before starting workers. Otherwise ask only when missing information materially blocks useful work.
 
-Default policy: one coordinator, zero to three active workers, no recursive delegation, bounded by available host capacity. Three is a maximum, not a default team size. Keep small tasks local and advise against unnecessary delegation. After approval, run independent research or separately owned implementation tasks concurrently. Wait for prerequisites before starting dependent work.
+Default policy: one coordinator, zero to three active workers, no recursive delegation, bounded by available host capacity. Three is a maximum, not a default team size. Always show a concrete multi-agent proposal and explicit solo option for every new task, including small tasks; explain when solo is more efficient and let the user choose. After approval, run independent research or separately owned implementation tasks concurrently. Wait for prerequisites before starting dependent work.
 
 ## Delegation approval gate
 
-1. Assess whether parallel work offers a meaningful benefit. Recommend solo execution with a brief reason if delegation is unnecessary or inefficient.
-2. If useful or specifically requested, show a proposal listing each worker's role, scope or owned files, deliverable, and dependencies. Explain what the coordinator will do and the expected speed/usage tradeoffs without inventing estimates.
-3. Ask for confirmation of this concrete plan. Wait for explicit approval before spawning workers or sending assignments. A plugin mention, general instruction to use agents, silence, or elapsed time is not confirmation of the plan.
+1. Assess the task and infer concrete worker roles from the natural request. Always propose a multi-agent plan, even for simple tasks; explain overhead and recommend solo when appropriate without skipping the proposal.
+2. Always show a proposal listing each worker's role, scope or owned files, deliverable, and dependencies. Explain what the coordinator will do and the expected speed/usage tradeoffs without inventing estimates.
+3. Include an explicit solo alternative and ask the user to choose. If they already explicitly chose solo, show a brief multi-agent alternative and proceed solo without asking again. Otherwise wait before executing either workflow. Label conceptual plans unavailable if host tools or capacity prevent delegation. Ask for confirmation of this concrete plan before any delegation. Wait for explicit approval before spawning workers or sending assignments. A plugin mention, general instruction to use agents, silence, or elapsed time is not confirmation of the plan.
 4. If declined, continue solo. If the user edits the plan, show the revised proposal and wait for confirmation.
 5. Execute the approved scope. Obtain fresh confirmation before adding workers or materially changing their scope. Routine execution and bounded retries within unchanged approved scope do not require repeated confirmation.
 
@@ -46,7 +46,7 @@ Acceptance: a minimal plugin can be discovered and invoked using the supported h
 - Keep user requests and host permission rules authoritative.
 - Add a final response contract and optional Progress Checklist integration.
 
-Acceptance: a simple request gets a brief recommendation to work solo and stays with the coordinator; an independent task produces a concrete proposal and no workers until approval, then bounded assignments and one checked result.
+Acceptance: every new task produces a concrete multi-agent proposal and explicit solo option before execution. Small tasks may include a recommendation for solo, but the user chooses. An explicit prior solo choice does not need reconfirmation. No workers start without approval of their concrete roles.
 
 ## Milestone 3: validate behavior
 
@@ -54,8 +54,8 @@ Run realistic cases using the same tool availability and permissions as normal u
 
 | Case | Expected behavior |
 | --- | --- |
-| One-sentence rewrite | Coordinator handles it directly |
-| Simple task with a general request for agents | Advise against unnecessary delegation; show a proposal only if still requested; wait for approval before launching |
+| One-sentence rewrite | Propose a worker draft plus coordinator review, offer solo, and wait for choice |
+| Simple task with a general request for agents | Always show a concrete plan plus solo option; explain overhead and wait for choice |
 | Useful parallel task, no confirmation yet | Show each worker's role and deliverable; start zero workers |
 | User is silent or declines | Silence: no workers; decline: continue solo |
 | User edits the proposed roles | Present revised proposal and wait for confirmation |
@@ -67,7 +67,7 @@ Run realistic cases using the same tool availability and permissions as normal u
 | Task B needs output from task A | Start B only after A's required output exists |
 | Two workers need one shared file | Coordinator owns the shared edit |
 | One worker fails | Bounded retry or coordinator completes the missing work |
-| No agent tools available | Truthful sequential execution |
+| No agent tools available | Label conceptual plan unavailable; offer solo and wait unless already chosen |
 | User changes requirements | Redirect or stop obsolete assignments; preserve completed useful work |
 | External action needs permission | Prepare reviewable output and follow the applicable permission requirement |
 

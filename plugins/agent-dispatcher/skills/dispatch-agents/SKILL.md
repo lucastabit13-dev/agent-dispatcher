@@ -1,17 +1,21 @@
 ---
 name: dispatch-agents
-description: Assess whether a task benefits from subagents and coordinate approved independent workers into one verified result. Use when the user requests Agent Dispatcher or coordinated subagent work.
+description: Always propose a concrete multi-agent plan with a solo option, then execute the user's chosen workflow. Use when the user requests Agent Dispatcher or coordinated subagent work.
 ---
 
 # Agent Dispatcher
 
 Produce one integrated result for the user's task. Follow higher-priority host instructions and permission boundaries. This skill supplies orchestration instructions; installation does not supply agent tools or extra capacity.
 
-## Assess and choose
+## Always propose, then let the user choose
 
-Inspect the task, available artifacts, constraints, and actual tools. Prefer solo execution for simple tasks, tightly coupled changes, or work where startup and integration overhead outweigh the benefit. Briefly explain that recommendation and do the work. If the user still explicitly wants a proposal, provide one without starting workers.
+For every new task handled through this skill, inspect the available context and tools and always present a concrete multi-agent plan before executing the task. Infer the work split from the user's natural request; do not require them to request separate research tasks or design worker assignments. This applies even to a one-sentence rewrite or another small task. Do not skip the proposal because solo execution seems more efficient. For small or tightly coupled tasks, explain that delegation adds overhead and recommend the solo option alongside the plan.
 
-Use one coordinator and zero to three active workers, limited further by the user's cap and actual available host capacity, including other active agents. Three is a ceiling. If tools or capacity are unavailable, say so and complete useful work sequentially; never simulate workers. Use only tool names and argument schemas actually exposed by this host. Do not substitute user-owned chats for worker tools.
+Offer a coordinator plus one to three workers, using fewer when sufficient. Multiple agents includes the coordinator: one worker drafting and the coordinator checking is enough for a small rewrite. Independent research areas may justify two or three workers. Do not manufacture simultaneous work when dependencies require sequential execution. Always include an explicit solo alternative in which the coordinator does the whole task.
+
+Wait for the user's choice before executing either workflow. If they explicitly choose solo in their task request, still show a brief multi-agent alternative and acknowledge their solo choice, then proceed solo without asking again. Do not repeat proposals for routine follow-ups within an already chosen unchanged scope. On a new task, present a new plan and choice.
+
+Use one coordinator and zero to three active workers, limited further by the user's cap and actual available host capacity, including other active agents. Three is a ceiling. If tools or capacity are unavailable, the user sets a zero-worker cap, or higher-priority host instructions prevent delegation, still present the conceptual multi-agent plan but label it unavailable and explain why. Offer solo and wait for their choice unless already chosen. Never simulate workers or imply an unavailable plan can run. Use only tool names and argument schemas actually exposed by this host. Do not substitute user-owned chats for worker tools.
 
 ## Confirm the concrete proposal
 
@@ -22,7 +26,7 @@ Before spawning any workers or sending worker assignments, present:
 | Coordinator | Shared edits, integration, evidence and permission checks | One checked result | Worker returns |
 | Worker 1 | A specific independent scope or owned files | A concrete output | Required inputs |
 
-Include only needed workers, up to three. State expected speed versus usage tradeoffs qualitatively; do not invent measurements or promise savings. Finish with: "Approve this delegation plan, change it, or have me work solo?"
+Include only needed workers, up to three. State expected speed versus usage tradeoffs qualitatively; do not invent measurements or promise savings. Include: "Solo option: I handle the whole task myself without workers." Finish with: "Approve this delegation plan, change it, or have me work solo?" If delegation is unavailable, ask whether to proceed solo instead of asking approval for a plan that cannot run.
 
 Wait for explicit user confirmation of this exact proposal. A plugin mention, general delegation request, silence, or elapsed time is not approval. Do not send assignments while waiting. On decline, continue solo. On edits, present the revised proposal and wait again. Obtain fresh confirmation before adding workers or materially changing approved scope. Do not repeatedly request confirmation for unchanged approved work or bounded retries.
 

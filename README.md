@@ -1,10 +1,10 @@
 # Agent Dispatcher
 
-A skill-based plugin that handles small tasks directly and coordinates approved independent subagents. Version 0.1.0 uses one coordinator and at most three active workers, limited by user preference and host capacity.
+A skill-based plugin that always proposes a concrete multi-agent plan and offers an explicit solo alternative for each new task. Version 0.2.0 uses one coordinator and at most three active workers, limited by user preference and host capacity.
 
-**Status: early release.** Local installation, picker discovery, and simple invocation have been confirmed. Live delegated execution and efficiency comparisons remain untested. See [verification evidence](docs/verification.md).
+**Status: early release.** Version 0.1.0 installation, picker discovery, and simple invocation were confirmed. Version 0.2.0 changes task routing to always propose a plan; fresh-chat behavioral checks must be repeated. Live delegated execution and efficiency comparisons remain untested. See [verification evidence](docs/verification.md).
 
-Before launching or assigning workers, it presents concrete roles, ownership, deliverables, dependencies, and speed/usage tradeoffs, then waits for explicit confirmation. Workers cannot create workers. Shared edits and final evidence checks belong to the coordinator.
+Before executing a new task, it presents concrete roles, ownership, deliverables, dependencies, and speed/usage tradeoffs, then waits for you to choose the proposed plan, revisions, or solo execution. Small tasks still receive a plan, with an honest explanation when solo would be more efficient. An explicit solo choice in your request is honored without asking again. Workers cannot create workers. Shared edits and final evidence checks belong to the coordinator.
 
 ## Installation
 
@@ -28,9 +28,9 @@ After selecting the plugin, describe the task, desired output, and constraints n
 
 > Plan an evening in Richboro, Pennsylvania: compare coffee shops, dinner restaurants, and activities after dinner. Verify hours and prices, then combine the findings into an itinerary.
 
-A simple rewrite should be completed directly. A useful parallel task should produce a proposal and wait. A general request for agents is not approval of an unseen proposal.
+Even a simple rewrite should produce a concrete multi-agent plan plus a solo option and wait for your choice. You do not need to ask for separate research tasks. Routine follow-ups within an already chosen scope do not restart the choice. A general request for agents is not approval of an unseen proposal.
 
-Plugin discovery and agent capability are separate: this skill does not add tools, capacity, or permissions. If agent tools are unavailable, it works sequentially and reports that limitation. Efficiency is unmeasured; parallel execution may use more tokens.
+Plugin discovery and agent capability are separate: this skill does not add tools, capacity, or permissions. If agent tools are unavailable, it labels the proposed multi-agent plan unavailable and offers solo execution; it never pretends to launch workers. Efficiency is unmeasured; parallel execution may use more tokens.
 
 ## Development and GitHub
 
@@ -40,7 +40,7 @@ See [behavioral scenarios](docs/validation.md), [project plan](PLAN.md), and [co
 
 The distributable plugin folder is `plugins/agent-dispatcher/`. No remote repository has been created or published. No open-source license has been selected; choose one before representing the project as open-source software.
 
-To create a validated plugin archive, run `python scripts/package.py`. It writes `dist/agent-dispatcher-0.1.0.zip`, containing the manifest and self-contained skill at the archive root. The archive is a distribution artifact, not a claim that every host supports ZIP installation. Install through the supported marketplace flow above.
+To create a validated plugin archive, run `python scripts/package.py`. It writes `dist/agent-dispatcher-0.2.0.zip`, containing the manifest and self-contained skill at the archive root. The archive is a distribution artifact, not a claim that every host supports ZIP installation. Install through the supported marketplace flow above.
 
 Before publishing to GitHub, run validation and packaging, review the staged files, create your GitHub repository, and upload this repository. The included marketplace uses relative paths, so it can be registered from another clone. Mark the first GitHub release as a prerelease and include [CHANGELOG.md](CHANGELOG.md) and the verification limitations in its description. Do not claim universal plugin directory approval or measured speed savings.
 

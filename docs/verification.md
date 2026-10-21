@@ -1,5 +1,17 @@
 # Verification evidence
 
+## Version 0.2.0 update — October 21, 2026
+
+- Changed routing to always present a concrete multi-agent proposal and solo alternative for each new task, including small tasks. User choice is required before execution unless solo was explicitly selected already.
+- Project structural validation and release archive integrity checks passed.
+- Refreshed the installed plugin through `codex plugin add agent-dispatcher@agent-dispatcher-local --json`.
+- Host listing reports version 0.2.0, installed=true, enabled=true.
+- Source and installed SKILL.md SHA256 both equal `774850BED716903BC8FA8C646BCDC5C3537CC7A164395EBC0952992E2A237DE9`.
+- Reviewed routing for simple rewrites, natural coffee-and-dinner requests, prior solo choices, unavailable tools, and unchanged follow-ups. This was an instruction review, not live behavioral testing.
+- No workers were started. Restart or refresh the host and open a fresh chat to test the new routing; prior 0.1.0 behavior is not evidence of the 0.2.0 policy.
+
+## Version 0.1.0 history
+
 Verified October 20, 2026, in the local Windows Codex environment.
 
 | Check | Observed result |

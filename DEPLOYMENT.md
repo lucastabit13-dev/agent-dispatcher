@@ -15,7 +15,7 @@ git diff --check
 git status --short
 ```
 
-Both Python commands must report success. Packaging writes `dist/agent-dispatcher-0.1.0.zip` for the current version. The archive has an explicit file allowlist and is checked against the source. It is ignored by Git; attach it separately to a GitHub release. Run these checks again after any changes.
+Both Python commands must report success. Packaging writes `dist/agent-dispatcher-0.2.0.zip` for the current version. The archive has an explicit file allowlist and is checked against the source. It is ignored by Git; attach it separately to a GitHub release. Run these checks again after any changes.
 
 ## 2. Install locally
 
@@ -36,8 +36,8 @@ Restart or refresh the desktop host, open a fresh chat, and select Agent Dispatc
 
 ## 3. Smoke-test the installation
 
-1. Ask for a one-sentence rewrite. Expect a direct answer without workers.
-2. Ask for substantial independent research, such as comparing coffee shops, dinner restaurants, and evening activities in a town, with verified hours and prices. Expect delegation assessment and a concrete proposal if parallel work is worthwhile.
+1. Ask for a one-sentence rewrite. Expect a concrete multi-agent plan and explicit solo option, with no execution until you choose. Choose solo and verify a direct rewrite with no workers.
+2. Ask for substantial independent research, such as comparing coffee shops, dinner restaurants, and evening activities in a town, with verified hours and prices. Expect concrete research roles and a solo alternative without having to request separate subtasks. The dispatcher must present a plan even if it recommends solo.
 3. Before confirmation, verify that no workers start. Approve the concrete proposal only when you want those workers to run.
 4. After approval, verify actual worker activity through the host, no more than three active workers, and a final integrated answer with evidence and limitations.
 
@@ -62,10 +62,10 @@ Check the **Actions** tab: **Validate plugin** must pass on both Windows and Lin
 
 In GitHub, choose **Releases → Draft a new release**. For the initial version:
 
-- Create tag `v0.1.0` targeting the reviewed `main` commit.
-- Title it `Agent Dispatcher 0.1.0 — early release`.
+- Create tag `v0.2.0` targeting the reviewed `main` commit.
+- Title it `Agent Dispatcher 0.2.0 — early release`.
 - Copy the corresponding changelog entry and state that live worker orchestration and efficiency measurements remain unverified until those tests have been recorded.
-- Attach `dist/agent-dispatcher-0.1.0.zip` from the validated source.
+- Attach `dist/agent-dispatcher-0.2.0.zip` from the validated source.
 - Select **Set as a pre-release**, then publish when ready.
 
 GitHub publication does not submit or approve a listing in the universal plugin directory. The ZIP is a distribution artifact; do not assume a host supports installing it directly.
@@ -77,7 +77,7 @@ Clone the published repository using the URL shown by GitHub, change into that c
 For a Git-backed marketplace, the documented registration command is also supported:
 
 ```powershell
-codex plugin marketplace add OWNER/REPOSITORY --ref v0.1.0
+codex plugin marketplace add OWNER/REPOSITORY --ref v0.2.0
 ```
 
 Replace `OWNER/REPOSITORY` and the tag with actual published values. Then list and install using the marketplace and plugin names in step 2. This remote installation path has not been tested before the repository exists on GitHub.

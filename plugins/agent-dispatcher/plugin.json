@@ -1,17 +1,17 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "agent-dispatcher",
-  "version": "0.1.0",
-  "description": "Assess tasks and coordinate approved, bounded subagent work with verified integration.",
+  "version": "0.2.0",
+  "description": "Always propose a multi-agent plan with a solo option, then coordinate the chosen workflow.",
   "extensions": {
     "com.openai": {
       "interface": {
         "displayName": "Agent Dispatcher",
         "shortDescription": "Coordinate approved subagent work",
-        "longDescription": "Handle small tasks directly and propose focused workers for independent work. Require confirmation before starting workers and verify their results.",
+        "longDescription": "Present a concrete multi-agent plan for every new task, including small tasks, with an explicit solo option. Wait for the user's choice, respect host capacity, and verify the chosen workflow's results.",
         "category": "Productivity",
         "capabilities": ["Read", "Write"],
-        "defaultPrompt": ["Assess whether subagents would help with this task. Propose their roles for my approval before starting any workers."]
+        "defaultPrompt": ["Propose a concrete multi-agent plan for my task and offer a solo alternative. Wait for my choice before executing it."]
       }
     }
   }
