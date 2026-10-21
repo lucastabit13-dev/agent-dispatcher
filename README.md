@@ -8,7 +8,7 @@ Before executing a new task, it presents concrete roles, ownership, deliverables
 
 ## Install through npm
 
-Publication is pending. The registry commands below become available after the first npm release. Until then, install from GitHub using `npm install -g github:lucastabit13-dev/agent-dispatcher`, then run `agent-dispatcher install`.
+Published on npm as [@lucastabit13/agent-dispatcher](https://www.npmjs.com/package/@lucastabit13/agent-dispatcher), version 0.2.0. Registry installation and packaged marketplace files have been verified.
 
 Requires Node.js 20 or newer and a Codex CLI with plugin support on PATH.
 
