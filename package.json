@@ -1,0 +1,36 @@
+{
+  "name": "@lucastabit13/agent-dispatcher",
+  "version": "0.2.0",
+  "description": "agent-dispatcher plugin for Codex and ChatGPT, with an explicit local marketplace installer.",
+  "license": "UNLICENSED",
+  "bin": {
+    "agent-dispatcher": "bin/cli.cjs"
+  },
+  "files": [
+    "bin/",
+    "plugins/",
+    ".agents/plugins/marketplace.json",
+    "docs/",
+    "DEPLOYMENT.md",
+    "PLAN.md",
+    "CONTRIBUTING.md",
+    "CHANGELOG.md",
+    "task-brief.md"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node --test",
+    "prepublishOnly": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lucastabit13-dev/agent-dispatcher.git"
+  },
+  "homepage": "https://github.com/lucastabit13-dev/agent-dispatcher#readme",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
+}

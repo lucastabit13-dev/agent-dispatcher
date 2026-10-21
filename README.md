@@ -6,6 +6,24 @@ A skill-based plugin that always proposes a concrete multi-agent plan and offers
 
 Before executing a new task, it presents concrete roles, ownership, deliverables, dependencies, and speed/usage tradeoffs, then waits for you to choose the proposed plan, revisions, or solo execution. Small tasks still receive a plan, with an honest explanation when solo would be more efficient. An explicit solo choice in your request is honored without asking again. Workers cannot create workers. Shared edits and final evidence checks belong to the coordinator.
 
+## Install through npm
+
+Publication is pending. The registry commands below become available after the first npm release. Until then, install from GitHub using `npm install -g github:lucastabit13-dev/agent-dispatcher`, then run `agent-dispatcher install`.
+
+Requires Node.js 20 or newer and a Codex CLI with plugin support on PATH.
+
+```sh
+npm install -g @lucastabit13/agent-dispatcher
+agent-dispatcher install
+```
+
+The explicit install command registers the marketplace inside the npm package, then installs the plugin. Restart the desktop app and open a fresh chat to use it. On Windows the installer uses codex.exe; set CODEX_BIN to the full Codex executable path if it is not on PATH.
+
+To update, run the same two commands again. Keep the npm package installed while using its local marketplace. Run `agent-dispatcher path` to print the marketplace root for manual registration. npm installation alone does not activate the plugin.
+
+To remove the plugin, run `codex plugin remove agent-dispatcher@agent-dispatcher-local`, then `codex plugin marketplace remove agent-dispatcher-local` and `npm uninstall -g @lucastabit13/agent-dispatcher`.
+
+
 ## Installation
 
 See [DEPLOYMENT.md](DEPLOYMENT.md) for complete installation, GitHub publishing, prerelease, update, and rollback steps.
@@ -38,7 +56,7 @@ Run `python scripts/validate.py` with Python 3.12 or newer. No dependencies are 
 
 See [behavioral scenarios](docs/validation.md), [project plan](PLAN.md), and [contribution guidance](CONTRIBUTING.md). The root `task-brief.md` is copied into the skill's references so the installed package is self-contained; validation checks that the copies match.
 
-The distributable plugin folder is `plugins/agent-dispatcher/`. No remote repository has been created or published. No open-source license has been selected; choose one before representing the project as open-source software.
+The distributable plugin folder is `plugins/agent-dispatcher/`. The source repository is https://github.com/lucastabit13-dev/agent-dispatcher. No open-source license has been selected; choose one before representing the project as open-source software.
 
 To create a validated plugin archive, run `python scripts/package.py`. It writes `dist/agent-dispatcher-0.2.0.zip`, containing the manifest and self-contained skill at the archive root. The archive is a distribution artifact, not a claim that every host supports ZIP installation. Install through the supported marketplace flow above.
 
